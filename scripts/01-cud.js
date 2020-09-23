@@ -69,13 +69,13 @@ function testDeleteAll() {
 
 // testInsertDocument({ name: "전우치", job: "도사" });
 
-// testInsertDocument([
-//     {name: "고길동", gender: "남성", species: "인간", age: 50},
-//     {name: "둘리", gender: "남성", species: "공룡", age: 100000000},
-//     {name: "도우너", gender: "남성", species: "외계인", age: 15},
-//     {name: "또치", gender: "여성", species: "조류", age: 13},
-//     {name: "마이콜", gender: "남성", species: "인간", age: 25},
-//     {name: "봉미선", gender: "여성", species: "인간", age: 35}
-// ]);
+testInsertDocument([
+    {name: "고길동", gender: "남성", species: "인간", age: 50},
+    {name: "둘리", gender: "남성", species: "공룡", age: 100000000},
+    {name: "도우너", gender: "남성", species: "외계인", age: 15},
+    {name: "또치", gender: "여성", species: "조류", age: 13},
+    {name: "마이콜", gender: "남성", species: "인간", age: 25},
+    {name: "봉미선", gender: "여성", species: "인간", age: 35}
+]);
 
-testDeleteAll();
+// testDeleteAll();
