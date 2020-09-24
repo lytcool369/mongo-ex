@@ -44,5 +44,63 @@ function testFind() {
     });
 }
 
+// 조건절
+// -> SQL: SELECT * FROM table WHERE column=...;
+function testFindByName(name) {
+    client.connect().then(client => {
+        const db = client.db("mydb");
+
+        db.collection("friends").find({
+            name: name
+        }).toArray().then(result => {
+            for (let i = 0; i < result.length; i++) {
+                console.log(result[i]);
+            }
+        }).catch(err => {
+            console.error(err);
+        });
+    });
+}
+
+// 조건절의 조합 
+// -> SQL: SELECT * FROM table WHERE column=(?) and(or) (?);
+// 비교 연산자: $gt(>), $gte(>=), $lt(<), $lte(<=), $ne(!=)
+function testFindByCondition(projection, condition) {
+    client.connect().then(client => {
+        const db = client.db("mydb");
+
+        db.collection("friends").find(
+            condition,       // 조건
+            projection
+        ).toArray().then(result => {
+            for (let i = 0; i < result.length; i++) {
+                console.log(result[i].name,
+                    result[i].age,
+                    result[i].species);
+            }
+        }).catch(err => {
+            console.error(err);
+        });
+    });
+}
+
 // testFindOne();
-testFind();
+// testFind();
+// testFindByName("고길동");
+
+// projection 객체: 1이면 표시, 0이면 표시 안함
+testFindByCondition({name: 1, age: 1, species: 1}, 
+    {
+        // 20세 이상, 50세 이하
+        $and: [
+            {age: {$gte: 20}},
+            {age: {$lte: 50}}
+        ]
+
+        // $or: [
+        //     {age: {$lt: 20}},
+        //     {age: {$gt: 50}}
+        // ]
+    });
+
+
