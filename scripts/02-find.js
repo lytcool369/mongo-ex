@@ -65,7 +65,7 @@ function testFindByName(name) {
 // 조건절의 조합 
 // -> SQL: SELECT * FROM table WHERE column=(?) and(or) (?);
 // 비교 연산자: $gt(>), $gte(>=), $lt(<), $lte(<=), $ne(!=)
-function testFindByCondition(projection, condition) {
+function testFindByCondition(condition, projection) {
     client.connect().then(client => {
         const db = client.db("mydb");
 
@@ -89,7 +89,7 @@ function testFindByCondition(projection, condition) {
 // testFindByName("고길동");
 
 // projection 객체: 1이면 표시, 0이면 표시 안함
-testFindByCondition({name: 1, age: 1, species: 1}, 
+testFindByCondition( 
     {
         // 20세 이상, 50세 이하
         $and: [
@@ -101,6 +101,6 @@ testFindByCondition({name: 1, age: 1, species: 1},
         //     {age: {$lt: 20}},
         //     {age: {$gt: 50}}
         // ]
-    });
+    }, {name: 1, age: 1, species: 1});
 
 
