@@ -5,6 +5,9 @@ const http = require('http');           // 실제 http 기능을 수행
 // MongoDB 모듈
 const { MongoClient } = require("mongodb");
 
+// bodyParser 모듈
+const bodyParser = require("body-parser");
+
 // Express 객체 생성
 const app = express();
 // set 메서드: express 내부의 여러 값을 설정(주로 설정)
@@ -14,6 +17,9 @@ app.set('port', 3000);      // port 키로 3000을 사용
 // express 의 static 을 앱의 미들웨어로 등록
 app.use(express.static(__dirname + "/public"));
 // -> public 디렉토리를 정적파일 저장소로 활용
+
+// body parser 등록
+app.use(bodyParser.urlencoded({extended: true}));
 
 // 뷰엔진 설정
 app.set("view engine", "ejs");              // 뷰 엔진 설정

@@ -17,5 +17,27 @@ module.exports = (app) => {
         })
     });
 
+    // 작성 form 페이지
+    router.get("/friends/new", (req, resp) => {
+        resp.status(200)
+            .render("friends_insert_form");
+    });
+
+    // 작성된 form 전송
+    router.post("/friends/save", (req, resp) => {
+        // POST 에서 전송된 데이터는 req.body 확인
+        // console.log("전송된 Body: ", req.body);
+
+        let document = req.body;
+        let db = app.get("db");
+
+        db.collection("friends").insertOne(document).then(result => {
+            console.log(result);
+            resp.redirect("/web/friends/list");     // 강제 URL 변경
+        }).catch(err => {
+            resp.status(500).send("ERROR: 친구를 추가하지 못했습니다.");
+        });
+    });
+
     return router;
 }

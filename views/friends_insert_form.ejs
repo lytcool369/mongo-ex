@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>친구 입력 Form</title>
+</head>
+<body>
+    <h1>Add Friend</h1>
+    <!-- action: 응답을 처리할 요청 URL
+         method: 전송 방식(GET, POST)
+         id    : html 식별자
+         name  : 서버 전송 식별자 -->
+    <form action="/web/friends/save" method="POST">
+        <label for="name">이름</label>
+        <input type="text" name="name" id="name"><br>   
+        <label for="species">종족</label>
+        <input type="text" name="species" id="species"><br>
+        <label for="age">나이</label>
+        <input type="text" name="age" id="age"><br>
+
+        <input type="submit" value="추가">
+    </form>
+</body>
+</html>
