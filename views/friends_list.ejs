@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends List</title>
+</head>
+<body>
+    <h1>Friends List</h1>
+
+    <!-- friends <- express로부터 전달 받은 객체 -->
+    <ul>
+        <% for (let i = 0; i < friends.length; i++) { %>
+            <li>
+                <%= friends[i].name %>:
+                <%= friends[i].species %>,
+                <%= friends[i].age %>세
+            </li>
+        <% } %>
+    </ul>
+</body>
+</html>
