@@ -12,9 +12,11 @@
     <ul>
         <% for (let i = 0; i < friends.length; i++) { %>
             <li>
-                <%= friends[i].name %>:
-                <%= friends[i].species %>,
-                <%= friends[i].age %>세
+                <a href="/web/friends/show/<%= friends[i]._id %>">
+                    <%= friends[i].name %>:
+                    <%= friends[i].species %>,
+                    <%= friends[i].age %>세
+                </a>
             </li>
         <% } %>
     </ul>
